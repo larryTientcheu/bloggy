@@ -1,3 +1,4 @@
+import { Bloggy } from './../models/bloggy-model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map } from 'rxjs/operators';
@@ -19,10 +20,15 @@ export class HttpServiceService {
     alert(error.message);
   }
 
-  get(endpoint: string) {
-    const url = `${API_HOST}${endpoint}`;
+  getAuthors() {
+    const url = `${API_HOST}${'authors/'}`;
     const req = this.http.get(url, this.httpOptions)
     return req;
+  }
 
+  getPosts() {
+    const url = `${API_HOST}${'posts/'}`;
+    const req = this.http.get<Bloggy[]>(url, this.httpOptions)
+    return req;
   }
 }

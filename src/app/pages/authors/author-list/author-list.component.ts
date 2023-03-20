@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Bloggy } from 'src/app/models/bloggy-model';
 import { HttpServiceService } from '../../../services/http-service.service';
 
 @Component({
@@ -7,18 +8,18 @@ import { HttpServiceService } from '../../../services/http-service.service';
   styleUrls: ['./author-list.component.css']
 })
 export class AuthorListComponent {
-  authors: any;
+ authors: any;
 
   constructor(private httpService: HttpServiceService){
  }
 
  ngOnInit(): void{
-  this.refresh();
+  this.getAuthorsList();
  }
 
- refresh(){
+ getAuthorsList(){
  try {
-   this.httpService.get('authors/').subscribe(
+   this.httpService.getAuthors().subscribe(
      data => {
        this.authors = data;
        console.log('It works');

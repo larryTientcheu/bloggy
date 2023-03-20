@@ -1,5 +1,6 @@
 import { HttpServiceService } from '../../../services/http-service.service';
 import { Component } from '@angular/core';
+import { Bloggy } from 'src/app/models/bloggy-model';
 
 @Component({
   selector: 'app-post-list',
@@ -8,7 +9,7 @@ import { Component } from '@angular/core';
 })
 export class PostListComponent {
 
-  posts: any;
+  posts! : Bloggy[]
 
   constructor(private httpService: HttpServiceService){
  }
@@ -18,7 +19,7 @@ export class PostListComponent {
  }
 
  refresh(){
-  this.httpService.get('posts/').subscribe(
+  this.httpService.getPosts().subscribe(
     data => {
       this.posts = data;
       console.log(this.posts);
