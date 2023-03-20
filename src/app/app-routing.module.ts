@@ -7,10 +7,11 @@ import { RouterModule, Routes } from '@angular/router';
 
 
 const routes: Routes = [
-  {path: "home", component: HomeComponent},
-  {path: "about-us", component: AboutUsComponent},
-  {path: "post", component: PostListComponent},
-  {path: "authors", component: AuthorListComponent}
+  { path: "", component: HomeComponent },
+  { path: "home", component: HomeComponent },
+  { path: "about-us", component: AboutUsComponent },
+  { path: "post", component: PostListComponent },
+  { path: "authors", component: AuthorListComponent }
 ];
 
 @NgModule({
