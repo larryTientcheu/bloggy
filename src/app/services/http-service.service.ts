@@ -11,7 +11,7 @@ export class HttpServiceService {
 
   constructor(private http: HttpClient) { }
 
-  getEndpoint(resource: string) {
-    return this.http.get(this.endpoint + resource);
+  getEndpoint(resource: String) {
+    return this.http.get(this.endpoint + resource + '/');
   }
 }

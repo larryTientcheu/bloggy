@@ -26,7 +26,7 @@ import { PostEditComponent } from './pages/post-edit/post-edit.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
