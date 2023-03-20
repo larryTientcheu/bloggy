@@ -10,6 +10,7 @@ import { AboutUsComponent } from './sections/about-us/about-us.component';
 import { PostListComponent } from './pages/post-list/post-list.component';
 import { PostViewComponent } from './pages/post-view/post-view.component';
 import { PostEditComponent } from './pages/post-edit/post-edit.component';
+import { AuthorListComponent } from './pages/author-list/author-list.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { PostEditComponent } from './pages/post-edit/post-edit.component';
     AboutUsComponent,
     PostListComponent,
     PostViewComponent,
-    PostEditComponent
+    PostEditComponent,
+    AuthorListComponent
   ],
   imports: [
     BrowserModule,

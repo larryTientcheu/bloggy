@@ -19,7 +19,7 @@ export class PostListComponent {
  }
 
  refresh(){
-  this.httpService.getEndpoint('authors').subscribe(
+  this.httpService.get('posts/').subscribe(
     data => {
       this.posts = data;
       console.log(this.posts);
