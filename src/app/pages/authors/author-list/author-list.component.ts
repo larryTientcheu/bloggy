@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HttpServiceService } from './../../services/http-service.service';
+import { HttpServiceService } from '../../../services/http-service.service';
 
 @Component({
   selector: 'app-author-list',
@@ -17,12 +17,17 @@ export class AuthorListComponent {
  }
 
  refresh(){
-  this.httpService.get('authors/').subscribe(
-    data => {
-      this.authors = data;
-      console.log(this.authors);
-    }
-  );
+ try {
+   this.httpService.get('authors/').subscribe(
+     data => {
+       this.authors = data;
+       console.log('It works');
+     }
+   );
+ } catch (error) {
+  console.log(error)
+  
+ }
  }
 
 }

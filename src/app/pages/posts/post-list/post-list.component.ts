@@ -1,6 +1,5 @@
-import { HttpServiceService } from './../../services/http-service.service';
+import { HttpServiceService } from '../../../services/http-service.service';
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-post-list',

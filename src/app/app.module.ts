@@ -7,10 +7,12 @@ import { NavigationComponent } from './sections/navigation/navigation.component'
 import { FooterComponent } from './sections/footer/footer.component';
 import { HomeComponent } from './sections/home/home.component';
 import { AboutUsComponent } from './sections/about-us/about-us.component';
-import { PostListComponent } from './pages/post-list/post-list.component';
-import { PostViewComponent } from './pages/post-view/post-view.component';
-import { PostEditComponent } from './pages/post-edit/post-edit.component';
-import { AuthorListComponent } from './pages/author-list/author-list.component';
+import { PostListComponent } from './pages/posts/post-list/post-list.component';
+import { PostViewComponent } from './pages/posts/post-view/post-view.component';
+import { PostEditComponent } from './pages/posts/post-edit/post-edit.component';
+import { AuthorListComponent } from './pages/authors/author-list/author-list.component';
+import { PostAddComponent } from './pages/posts/post-add/post-add.component';
+import { AuthorAddComponent } from './pages/authors/author-add/author-add.component';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { AuthorListComponent } from './pages/author-list/author-list.component';
     PostListComponent,
     PostViewComponent,
     PostEditComponent,
-    AuthorListComponent
+    AuthorListComponent,
+    PostAddComponent,
+    AuthorAddComponent
   ],
   imports: [
     BrowserModule,
