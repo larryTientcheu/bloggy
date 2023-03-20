@@ -1,5 +1,6 @@
 import { HttpServiceService } from './../../services/http-service.service';
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-post-list',
@@ -10,20 +11,20 @@ export class PostListComponent {
 
   posts: any;
 
-  constructor(private httpService: HttpServiceService) {
-  }
+  constructor(private httpService: HttpServiceService){
+ }
 
-  ngOnInit(): void {
-    this.refresh();
-  }
+ ngOnInit(): void{
+  this.refresh();
+ }
 
-  refresh() {
-    this.httpService.getEndpoint('authors').subscribe(
-      data => {
-        this.posts = data;
-        console.log(this.posts);
-      }
-    );
-  }
+ refresh(){
+  this.httpService.getEndpoint('authors').subscribe(
+    data => {
+      this.posts = data;
+      console.log(this.posts);
+    }
+  );
+ }
 
 }
