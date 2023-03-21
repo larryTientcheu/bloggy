@@ -1,4 +1,4 @@
-export class Bloggy {
+export class Posts {
     id!:number;
     title!:string;
     resume!:string;

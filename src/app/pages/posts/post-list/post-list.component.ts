@@ -1,6 +1,6 @@
 import { HttpServiceService } from '../../../services/http-service.service';
 import { Component } from '@angular/core';
-import { Bloggy } from 'src/app/models/bloggy-model';
+import { Posts } from 'src/app/models/posts.model';
 
 @Component({
   selector: 'app-post-list',
@@ -9,7 +9,7 @@ import { Bloggy } from 'src/app/models/bloggy-model';
 })
 export class PostListComponent {
 
-  posts! : Bloggy[]
+  posts! : Posts[]
 
   constructor(private httpService: HttpServiceService){
  }

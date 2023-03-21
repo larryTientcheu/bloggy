@@ -13,6 +13,7 @@ import { PostEditComponent } from './pages/posts/post-edit/post-edit.component';
 import { AuthorListComponent } from './pages/authors/author-list/author-list.component';
 import { PostAddComponent } from './pages/posts/post-add/post-add.component';
 import { AuthorAddComponent } from './pages/authors/author-add/author-add.component';
+import { AdminComponent } from './admin/admin.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { AuthorAddComponent } from './pages/authors/author-add/author-add.compon
     PostEditComponent,
     AuthorListComponent,
     PostAddComponent,
-    AuthorAddComponent
+    AuthorAddComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

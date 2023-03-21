@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Bloggy } from 'src/app/models/bloggy-model';
+import { Users } from 'src/app/models/user.model';
 import { HttpServiceService } from '../../../services/http-service.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { HttpServiceService } from '../../../services/http-service.service';
   styleUrls: ['./author-list.component.css']
 })
 export class AuthorListComponent {
- authors: any;
+ authors!: Users[];
 
   constructor(private httpService: HttpServiceService){
  }
