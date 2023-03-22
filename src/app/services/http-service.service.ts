@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { catchError, map } from 'rxjs/operators';
 import { envs } from '../secrets/envs';
 import { Observable } from 'rxjs';
-import { Users } from '../models/user.model';
+
 
 
 const API_HOST = envs.apiEndpoint;
@@ -22,19 +22,16 @@ export class HttpServiceService {
     alert(error.message);
   }
 
-  getAuthors(): Observable<Users[]> {
+  getAuthors() {
     const url = `${API_HOST}${`authors/`}`;
-    const req = this.http.get<Users[]>(url, this.httpOptions)
+    let httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
+    const req = this.http.get(url, this.httpOptions)
     return req;
   }
 
-  getAuthor(id: number): Observable<Users>{
-    const url = `${API_HOST}${`authors/${id}`}`;
-    const req = this.http.get<Users>(url, this.httpOptions)
-    return req;
-  }
-
-  getPosts() {
+  getPosts(): Observable<Posts[]> {
     const url = `${API_HOST}${`posts/`}`;
     const req = this.http.get<Posts[]>(url, this.httpOptions)
     return req;

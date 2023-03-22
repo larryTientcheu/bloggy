@@ -8,7 +8,7 @@ import { HttpServiceService } from '../../../services/http-service.service';
   styleUrls: ['./author-list.component.css']
 })
 export class AuthorListComponent {
- authors!: Users[];
+ authors: any;
 
   constructor(private httpService: HttpServiceService){
  }
@@ -22,7 +22,6 @@ export class AuthorListComponent {
    this.httpService.getAuthors().subscribe(
      data => {
        this.authors = data;
-       console.log('It works');
      }
    );
  } catch (error) {

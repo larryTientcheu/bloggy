@@ -21,7 +21,7 @@ export class HomeComponent {
   this.httpService.getPosts().subscribe(
     data => {
       this.posts = data;
-      console.log(this.posts);
+      // console.log(this.posts);
     }
   );
  }
