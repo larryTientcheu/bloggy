@@ -9,12 +9,15 @@ import { Posts } from 'src/app/models/posts.model';
 })
 export class PostListComponent {
 
-  posts! : Posts[]
+  id!: number
+  posts!: Posts[]
+  authors: any
 
   constructor(private httpService: HttpServiceService){
  }
 
  ngOnInit(): void{
+  this.getAuthors();
   this.refresh();
  }
 
@@ -22,9 +25,34 @@ export class PostListComponent {
   this.httpService.getPosts().subscribe(
     data => {
       this.posts = data;
-      console.log(this.posts);
     }
   );
  }
+
+ getAuthors() {
+  try {
+    this.httpService.getAuthors().subscribe(
+      data => {
+        this.authors = data;
+      }
+    );
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+getAuthorByPost(id: number) {
+  let result: any;
+  try {
+    this.authors.forEach((author: any) => {
+      if (author.id === id) {
+        result = author;
+      }
+    });
+  } catch (error) {
+    
+  }
+  return result;
+}
 
 }

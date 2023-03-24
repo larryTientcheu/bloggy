@@ -42,4 +42,17 @@ export class HttpServiceService {
     const req = this.http.get<Posts>(url, this.httpOptions)
     return req;
   }
+
+  editPost(post:Posts,id:number):Observable<Posts>{
+    const url = `${API_HOST}${`posts/${id}`}`;
+    const req = this.http.put<Posts>(url, post);
+    return req;
+  }
+
+  deletePost(id:number):Observable<Posts>{
+    const url = `${API_HOST}${`posts/${id}`}`;
+    const req = this.http.delete<Posts>(url);
+    return req
+   }
+
 }

@@ -11,10 +11,9 @@ import { AboutUsComponent } from './sections/about-us/about-us.component';
 import { PostListComponent } from './pages/posts/post-list/post-list.component';
 import { PostViewComponent } from './pages/posts/post-view/post-view.component';
 import { PostEditComponent } from './pages/posts/post-edit/post-edit.component';
-import { AuthorListComponent } from './pages/authors/author-list/author-list.component';
 import { PostAddComponent } from './pages/posts/post-add/post-add.component';
-import { AuthorAddComponent } from './pages/authors/author-add/author-add.component';
-import { AdminComponent } from './admin/admin.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -27,15 +26,15 @@ import { AdminComponent } from './admin/admin.component';
     PostListComponent,
     PostViewComponent,
     PostEditComponent,
-    AuthorListComponent,
     PostAddComponent,
-    AuthorAddComponent,
-    AdminComponent
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
+        ReactiveFormsModule
   ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
