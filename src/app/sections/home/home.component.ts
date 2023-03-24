@@ -23,7 +23,7 @@ export class HomeComponent {
  homePosts(){
   this.httpService.getPosts().subscribe(
     data => {
-      this.posts = data;
+      this.posts = data.reverse();
     }
   );
  }

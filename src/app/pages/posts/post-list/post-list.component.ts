@@ -24,7 +24,7 @@ export class PostListComponent {
  refresh(){
   this.httpService.getPosts().subscribe(
     data => {
-      this.posts = data;
+      this.posts = data.reverse();
     }
   );
  }

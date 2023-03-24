@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { catchError, map } from 'rxjs/operators';
 import { envs } from '../secrets/envs';
 import { Observable } from 'rxjs';
+import { Users } from '../models/user.model';
 
 
 
@@ -43,13 +44,19 @@ export class HttpServiceService {
     return req;
   }
 
-  editPost(post:Posts,id:number):Observable<Posts>{
+  addPost(post: Posts): Observable<Posts>{
+    const url = `${API_HOST}${`posts/`}`;
+    const req = this.http.post<Posts>(url, post)
+    return req;
+  }
+
+  editPost(post: Posts,id:number): Observable<Posts>{
     const url = `${API_HOST}${`posts/${id}`}`;
     const req = this.http.put<Posts>(url, post);
     return req;
   }
 
-  deletePost(id:number):Observable<Posts>{
+  deletePost(id: number): Observable<Posts>{
     const url = `${API_HOST}${`posts/${id}`}`;
     const req = this.http.delete<Posts>(url);
     return req

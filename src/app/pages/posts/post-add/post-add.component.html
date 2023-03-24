@@ -1,1 +1,53 @@
-<p>post-add works!</p>
+<header class="intro-header" style="background-image: url('assets/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading">
+                    <h1>Bloggy 4AJS</h1>
+                    <hr class="small">
+                    <span class="subheading">A Sample blog app</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="formular" style="width:50% ;margin: auto;">
+
+    <form [formGroup]="postForm" class="form-group">
+        <div class="title">
+            <label for="">Post Title</label>
+            <input class="form-control" type="text" name="" formControlName="title">
+        </div>
+
+        <div class="title">
+            <label for="">Autor</label>
+            <select class="form-control" name="" formControlName="author_id" id="">
+                <option [value]="author.id" *ngFor="let author of authors " >
+                    {{author.full_name}}  
+                </option>
+            </select>
+        </div>
+
+        <div class="title">
+            <label for="">Image Url</label>
+            <input class="form-control" type="text" name="" formControlName="image_url" id="">
+        </div>
+
+
+
+        <div class="title">
+            <label for="">Post resume</label>
+            <textarea name="" formControlName="resume" class="form-control" style="height: 70px;" id="" cols="30" rows="10"></textarea>
+        </div>
+
+        <div class="title">
+            <label for="">Content</label>
+            <textarea name="" formControlName="content" class="form-control" style="height: 90px;" id="" cols="30" rows="10"></textarea>
+        </div>
+        <div style="margin-top: 15px;">
+            <button (click)="onSubmitForm()" class="btn btn-info">Save</button>
+        </div>
+
+    </form>
+</div>

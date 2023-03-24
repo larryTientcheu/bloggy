@@ -35,7 +35,7 @@
             <tr *ngFor="let post of posts  ">
                 <td>{{post.id}}</td>
                 <td><img [src]="post.image_url" style="width:80px;" alt=""></td>
-                <td>{{post.title}}</td>
+                <td><a  [routerLink]=" '/posts/' + post.id ">{{post.title}}</a></td>
                 <td>{{getAuthorByPost(post.author_id)?.full_name}}</td>
                 <td>{{post.created_at | date:"dd/MM/YY"}}</td>
                 <td>

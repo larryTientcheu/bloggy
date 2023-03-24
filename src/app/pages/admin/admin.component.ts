@@ -32,7 +32,7 @@ export class AdminComponent implements OnInit{
      getPosts(){
       this.httpService.getPosts().subscribe(
         data => {
-          this.posts = data;
+          this.posts = data.reverse();
         }
       );
      }
@@ -76,22 +76,23 @@ export class AdminComponent implements OnInit{
      }
 
      OnDelete(){
-      // console.log(this.formDelete.value.idHide)
        if(this.formDelete.value.validation == "yes_delete"){
         this.httpService.deletePost(this.formDelete.value.idHide).subscribe()
+        this.route.navigate([this.route.url])
         this.notificationSuccess()
+        
        }
        else{
-         this.route.onSameUrlNavigation ="reload"
+        this.route.navigate([this.route.url])
        }
-       //console.log(this.formDelete.value.validation)
+  
      }
 
      notificationSuccess(){
       Swal.fire({
         position: 'top-end',
         icon: 'success',
-        title: 'Post Supprime',
+        title: 'Post Deleted',
         showConfirmButton: false,
         timer: 1500
       })
