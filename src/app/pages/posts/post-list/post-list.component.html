@@ -1,0 +1,41 @@
+<header class="intro-header" style="background-image: url('assets/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading">
+                    <h1>Posts</h1>
+                    <hr class="small">
+                    <span class="subheading">Our latests posts</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="container">
+
+    <div class="post" *ngFor="let post of posts">
+        <div class="row">
+            <div class="col-lg-2">
+                <div class="image" style="background-image: url({{post.image_url}})">
+
+                </div>
+            </div>
+            <div class="col-lg-10">
+                <div class="date">
+                    {{post.created_at}}
+                </div>
+                <h2>{{post.title}}</h2>
+                <div>
+                    {{getAuthorByPost(post.author_id)?.full_name}}
+                </div>
+                <div>{{post.resume}}</div>
+                <p>
+                    <a [routerLink]=" '/posts/' + post.id " class="button">
+                    Read more
+                </a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,23 @@
+th,
+td {
+    padding: 5px;
+    padding-left: 15px;
+}
+
+.post {
+    padding: 20px;
+    padding-top: 4px;
+    background-color: #eee;
+    margin-bottom: 20px;
+}
+
+.post .date {
+    margin-top: 16px;
+    float: right;
+}
+
+.post .image {
+    margin-top: 16px;
+    height: 180px;
+    background-color: #303030;
+}
