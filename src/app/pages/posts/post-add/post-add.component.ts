@@ -43,19 +43,23 @@ export class PostAddComponent {
   }
 
   onSubmitForm(){
-    this.httpService.addPost(this.postForm.value).subscribe(data => console.log(data))
-    this.postForm.reset();
-    this.notificationSuccess()
-    this.route.navigate(['posts']);
+   try {
+     this.httpService.addPost(this.postForm.value).subscribe(data => console.log(data))
+     this.postForm.reset();
+     this.notificationSuccess()
+     this.route.navigate(['posts']);
+   } catch (error) {
+    //add bitufucation faild
+   }
   }
 
   notificationSuccess(){
     Swal.fire({
       position: 'top-end',
       icon: 'success',
-      title: 'Post Cree',
+      title: 'Post Created',
       showConfirmButton: false,
-      timer: 1500
+      timer: 1200
     })
   }
 

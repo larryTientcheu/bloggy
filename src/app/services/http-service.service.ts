@@ -4,7 +4,6 @@ import { Injectable } from '@angular/core';
 import { catchError, map } from 'rxjs/operators';
 import { envs } from '../secrets/envs';
 import { Observable } from 'rxjs';
-import { Users } from '../models/user.model';
 
 
 
