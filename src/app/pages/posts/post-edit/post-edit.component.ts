@@ -62,7 +62,10 @@ export class PostEditComponent {
       created_at:new Date
 
     }
-    this.httpService.editPost(this.post,this.id).subscribe(res =>console.log(res))
+    this.httpService.editPost(this.post,this.id).subscribe(res =>console.log(res),
+    e => {
+      this.notificationFailure(e.error);
+    });
     this.router.navigate(['posts/',this.id]);
     this.notificationSuccess()
   }
@@ -73,6 +76,16 @@ export class PostEditComponent {
       title: 'Post Edited',
       showConfirmButton: false,
       timer: 1200
+    })
+  }
+
+  notificationFailure(error: any) {
+    Swal.fire({
+      position: 'top-end',
+      icon: 'error',
+      title: 'Failed to Edit Post: ' + error,
+      showConfirmButton: false,
+      timer: 3200
     })
   }
 }

@@ -44,7 +44,10 @@ export class PostAddComponent {
   }
 
   onSubmitForm() {
-    this.httpService.addPost(this.postForm.value).subscribe(data => console.log(data))
+    this.httpService.addPost(this.postForm.value).subscribe(data => console.log(data),
+    e => {
+      this.notificationFailure(e.error);
+    });
     this.postForm.reset();
     this.notificationSuccess()
     this.route.navigate(['posts']);
@@ -59,13 +62,13 @@ export class PostAddComponent {
       timer: 1200
     })
   }
-  notificationFailure() {
+  notificationFailure(error: any) {
     Swal.fire({
       position: 'top-end',
       icon: 'error',
-      title: 'Post Creation Failed: ' + this.error,
+      title: 'Post Creation Failed: ' + error,
       showConfirmButton: false,
-      timer: 1200
+      timer: 3200
     })
   }
 
