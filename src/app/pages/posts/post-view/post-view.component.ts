@@ -10,8 +10,8 @@ import { HttpServiceService } from 'src/app/services/http-service.service';
 })
 export class PostViewComponent {
   id!: number
-  post!: Posts
-  authors: any
+  post = new Posts();
+  authors: any = [];
 
   constructor(private httpService: HttpServiceService, private route: ActivatedRoute) {
   }
@@ -27,8 +27,12 @@ export class PostViewComponent {
     this.httpService.getPost(this.id).subscribe(
       data => {
         this.post = data;
-
-      })
+      },
+      e => {
+        console.log(e);
+        alert('The post does not exist ');
+      }
+    )
   }
 
   getAuthors() {
