@@ -13,46 +13,42 @@ export class PostListComponent {
   posts!: Posts[]
   authors: any
 
-  constructor(private httpService: HttpServiceService){
- }
+  constructor(private httpService: HttpServiceService) {
+  }
 
- ngOnInit(): void{
-  this.getAuthors();
-  this.refresh();
- }
+  ngOnInit(): void {
+    this.getAuthors();
+    this.refresh();
+  }
 
- refresh(){
-  this.httpService.getPosts().subscribe(
-    data => {
-      this.posts = data.reverse();
-    }
-  );
- }
+  refresh() {
+    this.httpService.getPosts().subscribe(
+      data => {
+        this.posts = data.reverse();
+      }
+    );
+  }
 
- getAuthors() {
-  try {
+  getAuthors() {
     this.httpService.getAuthors().subscribe(
       data => {
         this.authors = data;
       }
     );
-  } catch (error) {
-    console.log(error);
   }
-}
 
-getAuthorByPost(id: number) {
-  let result: any;
-  try {
-    this.authors.forEach((author: any) => {
-      if (author.id === id) {
-        result = author;
-      }
-    });
-  } catch (error) {
-    
+  getAuthorByPost(id: number) {
+    let result: any;
+    try {
+      this.authors.forEach((author: any) => {
+        if (author.id === id) {
+          result = author;
+        }
+      });
+    } catch (error) {
+      console.log(error)
+    }
+    return result;
   }
-  return result;
-}
 
 }

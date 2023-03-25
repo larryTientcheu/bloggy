@@ -23,21 +23,18 @@ export class HomeComponent {
  homePosts(){
   this.httpService.getPosts().subscribe(
     data => {
-      this.posts = data.reverse();
+      this.posts = data.reverse()
     }
   );
  }
 
  getAuthors() {
-  try {
+ 
     this.httpService.getAuthors().subscribe(
       data => {
         this.authors = data;
       }
     );
-  } catch (error) {
-    console.log(error);
-  }
 }
 
 getAuthorByPost(id: number) {
@@ -49,6 +46,7 @@ getAuthorByPost(id: number) {
       }
     });
   } catch (error) {
+    console.log(error)
     
   }
   return result;

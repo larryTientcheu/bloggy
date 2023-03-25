@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { NavigationComponent } from './sections/navigation/navigation.component';
 import { FooterComponent } from './sections/footer/footer.component';
 import { HomeComponent } from './sections/home/home.component';
-import { AboutUsComponent } from './sections/about-us/about-us.component';
 import { PostListComponent } from './pages/posts/post-list/post-list.component';
 import { PostViewComponent } from './pages/posts/post-view/post-view.component';
 import { PostEditComponent } from './pages/posts/post-edit/post-edit.component';
@@ -22,7 +21,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NavigationComponent,
     FooterComponent,
     HomeComponent,
-    AboutUsComponent,
     PostListComponent,
     PostViewComponent,
     PostEditComponent,
