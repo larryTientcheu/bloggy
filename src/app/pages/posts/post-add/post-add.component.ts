@@ -14,18 +14,19 @@ import Swal from 'sweetalert2';
 export class PostAddComponent {
 
   postForm!: FormGroup;
-  authors!: any
+  authors!: any;
+  error!: any;
 
-  constructor(private route :Router, private builder: FormBuilder, private httpService: HttpServiceService){}
+  constructor(private route: Router, private builder: FormBuilder, private httpService: HttpServiceService) { }
 
   ngOnInit(): void {
     this.getAuthors();
     this.postForm = this.builder.group({
-      title : ["",Validators.required] ,
-      author_id :["",Validators.required],
-      image_url:["",Validators.required] ,
-      resume:["",Validators.required],
-      content:["",Validators.required] 
+      title: ["", Validators.required],
+      author_id: ["", Validators.required],
+      image_url: ["", Validators.required],
+      resume: ["", Validators.required],
+      content: ["", Validators.required]
     })
   }
 
@@ -42,22 +43,27 @@ export class PostAddComponent {
     }
   }
 
-  onSubmitForm(){
-   try {
-     this.httpService.addPost(this.postForm.value).subscribe(data => console.log(data))
-     this.postForm.reset();
-     this.notificationSuccess()
-     this.route.navigate(['posts']);
-   } catch (error) {
-    //add bitufucation faild
-   }
+  onSubmitForm() {
+    this.httpService.addPost(this.postForm.value).subscribe(data => console.log(data))
+    this.postForm.reset();
+    this.notificationSuccess()
+    this.route.navigate(['posts']);
   }
 
-  notificationSuccess(){
+  notificationSuccess() {
     Swal.fire({
       position: 'top-end',
       icon: 'success',
       title: 'Post Created',
+      showConfirmButton: false,
+      timer: 1200
+    })
+  }
+  notificationFailure() {
+    Swal.fire({
+      position: 'top-end',
+      icon: 'error',
+      title: 'Post Creation Failed: ' + this.error,
       showConfirmButton: false,
       timer: 1200
     })

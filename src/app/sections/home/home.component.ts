@@ -9,8 +9,8 @@ import { HttpServiceService } from 'src/app/services/http-service.service';
 })
 export class HomeComponent {
   id!: number
-  posts!: Posts[]
-  authors: any
+  posts = new Array<Posts>;
+  authors: any = [];
 
   constructor(private httpService: HttpServiceService){
  }
@@ -23,21 +23,19 @@ export class HomeComponent {
  homePosts(){
   this.httpService.getPosts().subscribe(
     data => {
-      this.posts = data.reverse();
+      let l = data as Array<Posts>
+      this.posts = l.reverse()
     }
   );
  }
 
  getAuthors() {
-  try {
+ 
     this.httpService.getAuthors().subscribe(
       data => {
         this.authors = data;
       }
     );
-  } catch (error) {
-    console.log(error);
-  }
 }
 
 getAuthorByPost(id: number) {
@@ -49,6 +47,7 @@ getAuthorByPost(id: number) {
       }
     });
   } catch (error) {
+    console.log(error)
     
   }
   return result;

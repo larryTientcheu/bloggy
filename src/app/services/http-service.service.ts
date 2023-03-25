@@ -1,7 +1,7 @@
+import { catchError } from 'rxjs/operators';
 import { Posts } from '../models/posts.model';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, map } from 'rxjs/operators';
 import { envs } from '../secrets/envs';
 import { Observable } from 'rxjs';
 
@@ -18,7 +18,7 @@ export class HttpServiceService {
 
   constructor(private http: HttpClient) { }
 
-  handleError(error: Error) {
+  handleError(error: HttpErrorResponse) {
     alert(error.message);
   }
 

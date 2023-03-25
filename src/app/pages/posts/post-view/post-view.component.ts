@@ -8,10 +8,10 @@ import { HttpServiceService } from 'src/app/services/http-service.service';
   templateUrl: './post-view.component.html',
   styleUrls: ['./post-view.component.css']
 })
-export class PostViewComponent{
+export class PostViewComponent {
   id!: number
-  post!: Posts
-  authors: any
+  post = new Posts();
+  authors: any = [];
 
   constructor(private httpService: HttpServiceService, private route: ActivatedRoute) {
   }
@@ -23,27 +23,26 @@ export class PostViewComponent{
 
   refresh() {
     this.id = this.route.snapshot.params['id']
-    try {
-      this.httpService.getPost(this.id).subscribe(
-        data => {
-          this.post = data;
-  
-        })
-    } catch (error) {
-      
-    }
+
+    this.httpService.getPost(this.id).subscribe(
+      data => {
+        this.post = data;
+      },
+      e => {
+        console.log(e);
+        alert('The post does not exist ');
+      }
+    )
   }
 
   getAuthors() {
-    try {
-      this.httpService.getAuthors().subscribe(
-        data => {
-          this.authors = data;
-        }
-      );
-    } catch (error) {
-      console.log(error);
-    }
+
+    this.httpService.getAuthors().subscribe(
+      data => {
+        this.authors = data;
+      }
+    );
+
   }
 
   getAuthorByPost(id: number) {
@@ -55,7 +54,7 @@ export class PostViewComponent{
         }
       });
     } catch (error) {
-      
+      console.log(error)
     }
     return result;
   }
