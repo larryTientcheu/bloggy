@@ -1,0 +1,89 @@
+<header class="intro-header" style="background-image: url('assets/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading">
+                    <h1>Admin</h1>
+                    <hr class="small">
+                    <span class="subheading">...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div style="width: 50%;margin: auto;">
+
+
+    <div style="display:flex ;justify-content:end; width: 100%;">
+        <button routerLink="/post-add" class="button" style="vertical-align:middle"><span>New post</span></button>
+    </div>
+
+    <table class="table table-bordered" style="width: 100%;margin-top: 30px;">
+        <thead class="table-active">
+            <tr>
+                <td>ID</td>
+                <td>Image</td>
+                <td>Title</td>
+                <td>Autor</td>
+                <td>Date</td>
+                <td>Actions</td>
+            </tr>
+
+        </thead>
+        <tbody>
+            <tr *ngFor="let post of posts  ">
+                <td>{{post.id}}</td>
+                <td><img [src]="post.image_url" style="width:80px;" alt=""></td>
+                <td><a  [routerLink]=" '/posts/' + post.id ">{{post.title}}</a></td>
+                <td>{{getAuthorByPost(post.author_id)?.full_name}}</td>
+                <td>{{post.created_at | date:"dd/MM/YY"}}</td>
+                <td>
+                    <a [routerLink]=" '/post-edit/' + post.id "><i class="fa">&#xf044;</i></a>
+                    <button data-toggle="modal" (click)="OndeleteIndex(post)" type="button" data-target="#deleteModal"
+                        style="margin-left: 15px;"><i class="fa"></i>&#9249;</button>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Delete</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="form-group" [formGroup]="formDelete">
+
+                    <div class="name">
+
+                        <h6></h6>
+                        <div class="name">
+                            <label for="nom">In order to confirm the deletion of this post, please enter the word "yes_delete". Otherwise, press Cancel
+                            </label>
+                            <input type="hidden" value="" formControlName="idHide">
+                            <input type="text" class="form-control" formControlName="validation" name="name" id="">
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" type="submit" data-dismiss="modal" class="btn btn-primary"
+                    style="display: flex; align-items: center;flex-direction:row" (click)="OnDelete()"> <i
+                        class='bx bx-pencil' style="color:white;font-size:23px;"></i>Delete</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+
+            </div>
+        </div>
+    </div>
+</div>
